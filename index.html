@@ -6,6 +6,11 @@
 <title>Undangan Pernikahan Imam Masykuri & Hartutik</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+  /* Foto lokasi */
+.lokasi{all:unset;display:block;cursor:zoom-in;width:100%;max-width:520px;margin:4px auto 18px;aspect-ratio:4/3;border:1.5px solid rgba(159,216,207,.5);border-radius:16px;overflow:hidden;position:relative;background:var(--deep)}
+.lokasi:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.lokasi img{width:100%;height:100%;object-fit:cover;display:block}
+.lokasi-cap{font-size:.8rem;opacity:.8;margin:-10px 0 18px}
 :root{--navy:#0a2d4a;--deep:#072238;--teal:#12486a;--ribbon:#3a4fa8;--mint:#9fd8cf;--text:#f4f8fb}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
@@ -201,7 +206,9 @@ section{min-height:100vh;min-height:100dvh;padding:72px 24px}
     </div>
 
     <p class="alamat">jl raya kediri nganjuk rt 1 rw 04</p>
-    <a class="map" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Kv8tFR3vaWFhxbFC9">Lihat Lokasi di Peta</a>
+    <button class="lokasi" id="lokasi" aria-label="Perbesar foto lokasi acara"><img loading="lazy" src="lokasi.jpg" alt="Foto lokasi acara"></button>
+<p class="lokasi-cap">Tampak depan lokasi acara</p>
+    <a class="map" target="_blank" rel="noopener" href="https://maps.app.goo.gl/g2UqRwtJgq9TWaBr8">Lihat Lokasi di Peta</a>
 
     <p class="penutup">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
   </div>
@@ -272,6 +279,11 @@ document.querySelectorAll('#grid button').forEach(function(b,i){
   if(im.complete&&!im.naturalWidth)kosong();
   b.onclick=function(){if(b.classList.contains('kosong'))return;lbimg.src=im.src;lbimg.alt=im.alt;lb.classList.add('show')};
 });
+// Foto lokasi: klik untuk memperbesar
+var lk=document.getElementById('lokasi');
+lk.querySelector('img').onerror=function(){lk.style.display='none';var c=document.querySelector('.lokasi-cap');if(c)c.style.display='none'};
+lk.onclick=function(){lbimg.src=lk.querySelector('img').src;lbimg.alt='Foto lokasi acara';lb.classList.add('show')};
+
 function tutup(){lb.classList.remove('show')}
 document.getElementById('lbx').onclick=tutup;
 lb.onclick=function(e){if(e.target===lb)tutup()};
