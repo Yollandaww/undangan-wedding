@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Undangan Pernikahan Imam Masykuri & Hartutik</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a2d4a;--deep:#072238;--teal:#12486a;--ribbon:#3a4fa8;--mint:#9fd8cf;--text:#f4f8fb}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,system-ui,sans-serif;background:var(--navy);color:var(--text);font-weight:300;line-height:1.6}
+body.locked{overflow:hidden}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 28px;position:relative}
+.wrap{max-width:560px;width:100%}
+
+/* Cover */
+#cover{position:fixed;inset:0;z-index:20;background:linear-gradient(90deg,var(--deep) 70%,var(--teal) 70%);display:flex;align-items:center;transition:transform 1s ease,opacity 1s;padding:0 8vw}
+#cover.open{transform:translateY(-100%);opacity:0;pointer-events:none}
+#cover .txt{max-width:420px;position:relative;z-index:2}
+#cover h1{font-size:clamp(2.6rem,9vw,4rem);font-weight:400;line-height:1}
+#cover small{letter-spacing:.12em;font-size:.95rem;display:block;margin-bottom:56px}
+#cover h2{font-size:clamp(2rem,7vw,3rem);font-weight:400;line-height:1.25;margin-bottom:48px}
+#cover .to{font-size:.9rem}
+.namebox{border:2px solid #fff;border-radius:16px;padding:18px 20px;margin:10px 0 22px;font-size:1.25rem;font-weight:600;min-height:64px;display:flex;align-items:center;justify-content:center;text-align:center}
+.btn{font:inherit;font-weight:600;background:#fff;color:var(--deep);border:0;border-radius:999px;padding:12px 28px;cursor:pointer;width:100%}
+.btn:focus-visible,#music:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.bow{position:absolute;right:0;top:0;height:100%;width:44%;min-width:200px;z-index:1}
+.note{font-size:.75rem;margin-top:14px;opacity:.8}
+
+/* Isi */
+.frame{position:absolute;inset:14px;border:1px solid rgba(159,216,207,.35);border-radius:6px;pointer-events:none}
+.flower{position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#6f7fc8,#34478f 55%,transparent 72%);opacity:.75}
+.f1{top:-40px;left:-40px}.f2{top:-40px;right:-40px}.f3{bottom:-40px;left:-40px}.f4{bottom:-40px;right:-40px}
+.bismillah{font-size:2rem;font-family:"Amiri","Scheherazade New","Noto Naskh Arabic",serif;margin-bottom:12px}
+.salam{font-weight:600;font-size:.95rem;margin-bottom:28px}
+.lead{font-size:.95rem;margin-bottom:32px}
+.nama{font-size:clamp(2.4rem,10vw,3.6rem);font-weight:400;line-height:1.1}
+.ortu{font-size:.95rem;margin:6px 0 20px}
+.amp{font-size:1.4rem;margin:8px 0}
+#cd{display:flex;gap:10px;justify-content:center;margin:28px 0}
+#cd div{border:1.5px solid #fff;border-radius:10px;min-width:68px;padding:10px 6px}
+#cd b{display:block;font-size:1.5rem;font-weight:600}
+#cd span{font-size:.7rem}
+.tgl{display:flex;gap:10px;justify-content:center;margin:20px 0}
+.tgl div{border:1.5px solid #fff;border-radius:10px;width:56px;padding:6px 0;font-size:1.05rem}
+.hari{margin-bottom:6px;font-size:1rem}
+.acara{display:flex;justify-content:center;margin:26px 0}
+.acara>div{padding:0 22px;font-size:.95rem}
+.acara>div:first-child{border-right:2px solid #fff;text-align:right}
+.acara>div:last-child{text-align:left}
+.alamat{font-weight:600;margin-bottom:20px}
+.map{display:inline-block;color:var(--deep);background:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:10px 24px}
+.map:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.penutup{margin-top:34px;font-size:.9rem}
+/* Ayat */
+#ayat{background:var(--deep)}
+.mono{width:150px;height:150px;border-radius:50%;border:4px solid var(--mint);background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:3.4rem;font-weight:600;letter-spacing:.04em;color:var(--mint);margin:0 auto 40px}
+.ayat-teks{font-size:1.02rem;line-height:1.8}
+.ayat-sumber{margin-top:28px;font-weight:600;color:var(--mint);font-size:1.05rem}
+/* Galeri */
+#galeri{background:var(--deep)}
+#galeri h2{font-size:clamp(2rem,8vw,2.8rem);font-weight:400;margin-bottom:6px}
+#galeri .sub{font-size:.95rem;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:560px;width:100%}
+.grid button{all:unset;cursor:pointer;display:block;aspect-ratio:3/2;border:1.5px solid rgba(159,216,207,.4);border-radius:14px;overflow:hidden;background:linear-gradient(135deg,var(--teal),var(--ribbon));position:relative}
+.grid button:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.grid img{width:100%;height:100%;object-fit:cover;display:block}
+.grid button.kosong::after{content:"Foto " attr(data-n);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:.8}
+/* Ucapan */
+#ucapan h2{font-size:clamp(2rem,8vw,2.8rem);font-weight:400;margin-bottom:6px}
+#ucapan .sub{font-size:.95rem;margin-bottom:28px}
+.form{display:grid;gap:12px;text-align:left}
+.form label{font-size:.85rem;font-weight:600}
+.form input,.form select,.form textarea{font:inherit;font-weight:300;width:100%;color:#fff;background:var(--deep);border:1.5px solid rgba(255,255,255,.7);border-radius:12px;padding:12px 14px;margin-top:4px}
+.form textarea{min-height:110px;resize:vertical}
+.form select option{color:#000}
+.form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.msg{font-size:.85rem;min-height:1.3em;text-align:center}
+#daftar{margin-top:30px;display:grid;gap:10px;text-align:left;max-height:420px;overflow-y:auto}
+.item{border:1.5px solid rgba(159,216,207,.4);border-radius:14px;padding:12px 16px;background:rgba(7,34,56,.7)}
+.item b{font-weight:600}
+.item small{opacity:.75;margin-left:6px}
+.item p{font-size:.92rem;margin-top:4px;white-space:pre-wrap;word-break:break-word}
+#lb{position:fixed;inset:0;z-index:30;background:rgba(4,16,28,.94);display:none;align-items:center;justify-content:center;padding:20px}
+#lb.show{display:flex}
+#lb img{max-width:100%;max-height:88vh;border-radius:10px}
+#lb button{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1.5px solid #fff;background:transparent;color:#fff;font-size:1.3rem;cursor:pointer}
+#lb button:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+#music{position:fixed;right:16px;bottom:16px;z-index:10;width:48px;height:48px;border-radius:50%;border:1.5px solid #fff;background:var(--deep);color:#fff;font-size:1.2rem;cursor:pointer;display:none}
+#music.show{display:block}
+#music.spin{animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#music.spin{animation:none}#cover{transition:none}html{scroll-behavior:auto}}
+@media(max-width:560px){.bow{opacity:.9;width:60%;right:-18%}#cover{background:linear-gradient(90deg,var(--deep) 75%,var(--teal) 75%)}}
+
+/* Responsif & kenyamanan (mobile + desktop) */
+html{-webkit-text-size-adjust:100%}
+section{min-height:100vh;min-height:100dvh;padding:72px 24px}
+#cover{height:100vh;height:100dvh;overflow-y:auto;align-items:stretch;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+#cover .txt{margin-block:auto;padding:28px 0;width:100%}
+.btn{min-height:48px;transition:transform .15s}
+.btn:active{transform:scale(.98)}
+.form input,.form select,.form textarea{font-size:16px}
+.map{min-height:44px;display:inline-flex;align-items:center}
+.grid button{cursor:zoom-in}
+.grid img{transition:transform .4s}
+@media(hover:hover){.grid button:hover img{transform:scale(1.04)}}
+#music{top:calc(12px + env(safe-area-inset-top));right:12px;bottom:auto;width:46px;height:46px}
+#lb button{top:calc(14px + env(safe-area-inset-top))}
+@media(max-width:560px){
+  #cover{padding-left:7vw;padding-right:7vw}
+  #cover .txt{max-width:70%}
+  .bow{opacity:.5}
+  .acara>div{padding:0 12px;font-size:.88rem}
+  #cd{gap:6px}#cd div{min-width:58px}
+  .flower{width:110px;height:110px}
+}
+@media(max-width:360px){#cd div{min-width:52px}#cd b{font-size:1.3rem}}
+@media(min-width:900px){
+  #cover{padding-left:12vw}
+  #cover .txt{max-width:480px}
+  .wrap{max-width:640px}
+  .lead,.ayat-teks{font-size:1.1rem}
+  .flower{width:230px;height:230px}
+  .frame{inset:24px}
+  #galeri .grid{max-width:1040px;grid-template-columns:repeat(3,1fr)}
+  #ucapan .wrap{max-width:600px}
+}
+@media(max-height:520px) and (orientation:landscape){section{min-height:0}}
+/* Foto album lebih besar */
+#galeri{padding-left:12px;padding-right:12px}
+#galeri .grid{max-width:760px;gap:16px}
+@media(min-width:900px){#galeri{padding-left:32px;padding-right:32px}#galeri .grid{max-width:1360px;gap:20px}}
+/* Rasio foto album: 1 = 3:2, 2 = 1:1, 3 = 2:3 */
+.grid button:nth-child(1){aspect-ratio:3/2}
+.grid button:nth-child(2){aspect-ratio:1/1}
+.grid button:nth-child(3){aspect-ratio:2/3;width:100%;max-width:440px;justify-self:center}
+@media(min-width:900px){
+  #galeri .grid{display:flex;align-items:flex-start;justify-content:center}
+  #galeri .grid button{min-width:0}
+  #galeri .grid button:nth-child(1){flex:1.5 1 0}
+  #galeri .grid button:nth-child(2){flex:1 1 0}
+  #galeri .grid button:nth-child(3){flex:.6667 1 0;max-width:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- Musik: letakkan file lagu.mp3 di folder yang sama dengan index.html -->
+<audio id="audio" src="lagu.mp3" loop preload="auto"></audio>
+
+<div id="cover">
+  <div class="txt">
+    <h1>Undangan</h1>
+    <small>Pernikahan</small>
+    <h2>Imam<br>Masykuri<br>&amp; Hartutik</h2>
+    <p class="to">Kepada Yth.<br>Bapak/Ibu/Saudara/i</p>
+    <div class="namebox" id="tamu">Tamu Undangan</div>
+    <button class="btn" id="buka">Buka Undangan</button>
+  </div>
+  <svg class="bow" viewBox="0 0 300 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M100 0h95l-8 330h-60zM95 470h100l15 330H80z" fill="#3a4fa8"/>
+    <path d="M140 400 30 330q-10 40 10 90l100 0zM150 400 280 320q15 40-10 100z" fill="#3f55b0"/>
+    <path d="M140 410 40 420q-20 60 15 110zM155 410 270 420q25 70-20 120z" fill="#2f4195"/>
+    <rect x="125" y="380" width="45" height="50" rx="14" fill="#2b3b8a"/>
+  </svg>
+</div>
+
+<button id="music" aria-label="Putar atau jeda musik">♪</button>
+
+<main>
+<section id="isi">
+  <div class="frame"></div>
+  <div class="flower f1"></div><div class="flower f2"></div><div class="flower f3"></div><div class="flower f4"></div>
+  <div class="wrap">
+    <div class="bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <p class="salam">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <p class="lead">Dengan Memohon Rahmat Dan Rida Allah SWT, Serta Senantiasa Mensyukuri Segala Nikmat-Nya, Kami Bermaksud Menggelar Acara Pernikahan Putra-Putri Kami :</p>
+
+    <h2 class="nama">Imam masykuri</h2>
+    <p class="ortu">Putra alm bapak h. muslim Dan Ibu siti fatonah</p>
+    <p class="amp">&amp;</p>
+    <h2 class="nama">Hartutik</h2>
+    <p class="ortu">Putri alm bapak kasri Dan Ibu warti</p>
+
+    <p style="margin-top:36px">Acara Pernikahan Akan Diselenggarakan Pada :</p>
+    <p class="hari" style="margin-top:14px;font-weight:600">Selasa</p>
+    <div class="tgl"><div>27</div><div>10</div><div>26</div></div>
+
+    <div id="cd" aria-live="off">
+      <div><b id="d">0</b><span>Hari</span></div>
+      <div><b id="h">0</b><span>Jam</span></div>
+      <div><b id="m">0</b><span>Menit</span></div>
+      <div><b id="s">0</b><span>Detik</span></div>
+    </div>
+
+    <div class="acara">
+      <div>Akad Nikah :<br>Pukul 08.00 - Selesai</div>
+      <div>Resepsi Pernikahan :<br>Pukul 16.00 - selesai</div>
+    </div>
+
+    <p class="alamat">jl raya kediri nganjuk rt 1 rw 04</p>
+    <a class="map" target="_blank" rel="noopener" href="https://maps.app.goo.gl/tXxps8EZQgtQbE928">Lihat Lokasi di Peta</a>
+
+    <p class="penutup">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+  </div>
+</section>
+<section id="ayat">
+  <div class="wrap">
+    <div class="mono" aria-label="Monogram Imam dan Hartutik">IH</div>
+    <p class="ayat-teks">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
+    <p class="ayat-sumber">(QS. Ar-Rum: 21)</p>
+  </div>
+</section>
+
+<section id="galeri">
+  <h2>Album Kenangan</h2>
+  <p class="sub">Imam Masykuri &amp; Hartutik</p>
+  <div class="grid" id="grid">
+    <button aria-label="Perbesar foto 1"><img loading="lazy" src="prewed-1.jpg" alt="Foto prewedding 1"></button>
+    <button aria-label="Perbesar foto 2"><img loading="lazy" src="prewed-2.jpg" alt="Foto prewedding 2"></button>
+    <button aria-label="Perbesar foto 3"><img loading="lazy" src="prewed-3.jpg" alt="Foto prewedding 3"></button>
+  </div>
+</section>
+<section id="ucapan">
+  <div class="wrap">
+    <h2>Ucapan &amp; Doa</h2>
+    <p class="sub">Kirimkan ucapan dan doa terbaik untuk kedua mempelai.</p>
+    <div class="form">
+      <div><label for="u-nama">Nama</label><input id="u-nama" maxlength="60" autocomplete="name"></div>
+      <div><label for="u-hadir">Kehadiran</label>
+        <select id="u-hadir"><option>Insya Allah hadir</option><option>Berhalangan hadir</option></select></div>
+      <div><label for="u-isi">Ucapan &amp; doa</label><textarea id="u-isi" maxlength="400"></textarea></div>
+      <button class="btn" id="u-kirim">Kirim Ucapan</button>
+      <p class="msg" id="u-msg" role="status"></p>
+    </div>
+    <div id="daftar" aria-label="Daftar ucapan"></div>
+  </div>
+</section>
+</main>
+
+<div id="lb" role="dialog" aria-label="Foto prewedding">
+  <button id="lbx" aria-label="Tutup">✕</button>
+  <img id="lbimg" alt="Foto prewedding">
+</div>
+
+<script>
+// Nama tamu dari link: index.html?to=Budi+Santoso
+var to=new URLSearchParams(location.search).get('to');
+if(to)document.getElementById('tamu').textContent=to;
+
+var audio=document.getElementById('audio'),music=document.getElementById('music');
+function setPlaying(p){music.classList.toggle('spin',p)}
+document.getElementById('buka').onclick=function(){
+  document.getElementById('cover').classList.add('open');
+  document.body.classList.remove('locked');
+  music.classList.add('show');
+  audio.play().then(function(){setPlaying(true)}).catch(function(){setPlaying(false)});
+  window.scrollTo(0,0);
+};
+music.onclick=function(){
+  if(audio.paused){audio.play();setPlaying(true)}else{audio.pause();setPlaying(false)}
+};
+
+// Album kenangan: foto ditulis di HTML (foto/prewed-1.png dst). Klik untuk memperbesar.
+var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
+document.querySelectorAll('#grid button').forEach(function(b,i){
+  var im=b.querySelector('img');b.dataset.n=i+1;
+  function kosong(){im.remove();b.classList.add('kosong')}
+  im.onerror=kosong;
+  if(im.complete&&!im.naturalWidth)kosong();
+  b.onclick=function(){if(b.classList.contains('kosong'))return;lbimg.src=im.src;lbimg.alt=im.alt;lb.classList.add('show')};
+});
+function tutup(){lb.classList.remove('show')}
+document.getElementById('lbx').onclick=tutup;
+lb.onclick=function(e){if(e.target===lb)tutup()};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')tutup()});
+
+// Ucapan & doa
+// Isi nomor WhatsApp mempelai (format 62..., tanpa + atau spasi) agar ucapan terkirim ke WhatsApp.
+var NOMOR_WA='';
+var KUNCI='ucapan-imam-hartutik',daftar=document.getElementById('daftar'),umsg=document.getElementById('u-msg');
+var uNama=document.getElementById('u-nama'),uHadir=document.getElementById('u-hadir'),uIsi=document.getElementById('u-isi');
+if(to)uNama.value=to;
+function muat(){try{return JSON.parse(localStorage.getItem(KUNCI)||'[]')}catch(e){return []}}
+function simpan(a){try{localStorage.setItem(KUNCI,JSON.stringify(a))}catch(e){}}
+function tampil(){
+  daftar.textContent='';
+  muat().forEach(function(x){
+    var d=document.createElement('div'),h=document.createElement('div'),b=document.createElement('b'),s=document.createElement('small'),p=document.createElement('p');
+    d.className='item';b.textContent=x.nama;s.textContent=x.hadir;p.textContent=x.isi;
+    h.appendChild(b);h.appendChild(s);d.appendChild(h);d.appendChild(p);daftar.appendChild(d);
+  });
+}
+document.getElementById('u-kirim').onclick=function(){
+  var nama=uNama.value.trim(),isi=uIsi.value.trim();
+  if(!nama||!isi){umsg.textContent='Isi nama dan ucapan terlebih dahulu.';return}
+  var a=muat();a.unshift({nama:nama,hadir:uHadir.value,isi:isi});simpan(a);tampil();
+  uIsi.value='';
+  if(NOMOR_WA){
+    var t='Ucapan & doa untuk Imam Masykuri & Hartutik\nNama: '+nama+'\nKehadiran: '+uHadir.value+'\n\n'+isi;
+    window.open('https://wa.me/'+NOMOR_WA+'?text='+encodeURIComponent(t),'_blank');
+    umsg.textContent='Ucapan tersimpan. Tekan kirim di WhatsApp untuk menyampaikannya. Terima kasih!';
+  }else{
+    umsg.textContent='Terima kasih atas ucapan dan doanya!';
+  }
+};
+tampil();
+
+// Hitung mundur ke akad nikah: 27 Oktober 2026 pukul 08.00 WIB
+var target=new Date('2026-10-27T08:00:00+07:00').getTime();
+function tick(){
+  var t=Math.max(0,target-Date.now());
+  document.getElementById('d').textContent=Math.floor(t/864e5);
+  document.getElementById('h').textContent=Math.floor(t%864e5/36e5);
+  document.getElementById('m').textContent=Math.floor(t%36e5/6e4);
+  document.getElementById('s').textContent=Math.floor(t%6e4/1e3);
+}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
