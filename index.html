@@ -134,20 +134,60 @@ section{min-height:100vh;min-height:100dvh;padding:72px 24px}
 }
 @media(max-height:520px) and (orientation:landscape){section{min-height:0}}
 /* Foto album lebih besar */
-#galeri{padding-left:12px;padding-right:12px}
-#galeri .grid{max-width:760px;gap:16px}
-@media(min-width:900px){#galeri{padding-left:32px;padding-right:32px}#galeri .grid{max-width:1360px;gap:20px}}
-/* Rasio foto album: 1 = 3:2, 2 = 1:1, 3 = 2:3 */
-.grid button:nth-child(1){aspect-ratio:3/2}
-.grid button:nth-child(2){aspect-ratio:1/1}
-.grid button:nth-child(3){aspect-ratio:2/3;width:100%;max-width:440px;justify-self:center}
-@media(min-width:900px){
-  #galeri .grid{display:flex;align-items:flex-start;justify-content:center}
-  #galeri .grid button{min-width:0}
-  #galeri .grid button:nth-child(1){flex:1.5 1 0}
-  #galeri .grid button:nth-child(2){flex:1 1 0}
-  #galeri .grid button:nth-child(3){flex:.6667 1 0;max-width:none}
+
+
+
+
+
+
+/* Perbaikan foto album: portrait dan tidak terpotong */
+#galeri .grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 320px;
+  margin: 20px auto 0;
 }
+
+#galeri .grid button {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 2 / 3 !important;
+  height: auto;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+#galeri .grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+}
+
+@media (min-width: 900px) {
+  #galeri .grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 320px;
+  }
+
+  #galeri .grid button {
+    flex: none;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 2 / 3 !important;
+  }
+}
+
 </style>
 </head>
 <body class="locked">
