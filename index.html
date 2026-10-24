@@ -63,15 +63,7 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 .mono{width:150px;height:150px;border-radius:50%;border:4px solid var(--mint);background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:3.4rem;font-weight:600;letter-spacing:.04em;color:var(--mint);margin:0 auto 40px}
 .ayat-teks{font-size:1.02rem;line-height:1.8}
 .ayat-sumber{margin-top:28px;font-weight:600;color:var(--mint);font-size:1.05rem}
-/* Galeri */
-#galeri{background:var(--deep)}
-#galeri h2{font-size:clamp(2rem,8vw,2.8rem);font-weight:400;margin-bottom:6px}
-#galeri .sub{font-size:.95rem;margin-bottom:28px}
-.grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:560px;width:100%}
-.grid button{all:unset;cursor:pointer;display:block;aspect-ratio:3/2;border:1.5px solid rgba(159,216,207,.4);border-radius:14px;overflow:hidden;background:linear-gradient(135deg,var(--teal),var(--ribbon));position:relative}
-.grid button:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
-.grid img{width:100%;height:100%;object-fit:cover;display:block}
-.grid button.kosong::after{content:"Foto " attr(data-n);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:.8}
+
 /* Ucapan */
 #ucapan h2{font-size:clamp(2rem,8vw,2.8rem);font-weight:400;margin-bottom:6px}
 #ucapan .sub{font-size:.95rem;margin-bottom:28px}
@@ -133,60 +125,6 @@ section{min-height:100vh;min-height:100dvh;padding:72px 24px}
   #ucapan .wrap{max-width:600px}
 }
 @media(max-height:520px) and (orientation:landscape){section{min-height:0}}
-/* Foto album lebih besar */
-
-
-
-
-
-
-/* Perbaikan foto album: portrait dan tidak terpotong */
-#galeri .grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 320px;
-  margin: 20px auto 0;
-}
-
-#galeri .grid button {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 2 / 3 !important;
-  height: auto;
-  min-width: 0;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-#galeri .grid img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain !important;
-  object-position: center;
-}
-
-@media (min-width: 900px) {
-  #galeri .grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 320px;
-  }
-
-  #galeri .grid button {
-    flex: none;
-    width: 100%;
-    max-width: 320px;
-    aspect-ratio: 2 / 3 !important;
-  }
-}
 
 </style>
 </head>
@@ -260,15 +198,6 @@ section{min-height:100vh;min-height:100dvh;padding:72px 24px}
     <p class="ayat-sumber">(QS. Ar-Rum: 21)</p>
   </div>
 </section>
-
-<section id="galeri">
-  <h2>Album Kenangan</h2>
-  <p class="sub">Imam Masykuri &amp; Hartutik</p>
-  <div class="grid" id="grid">
-    
-    <button aria-label="Perbesar foto 3"><img loading="lazy" src="prewed-3.jpg" alt="Foto prewedding 3"></button>
-  </div>
-</section>
 <section id="ucapan">
   <div class="wrap">
     <h2>Ucapan &amp; Doa</h2>
@@ -309,15 +238,6 @@ music.onclick=function(){
   if(audio.paused){audio.play();setPlaying(true)}else{audio.pause();setPlaying(false)}
 };
 
-// Album kenangan: foto ditulis di HTML (foto/prewed-1.png dst). Klik untuk memperbesar.
-var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
-document.querySelectorAll('#grid button').forEach(function(b,i){
-  var im=b.querySelector('img');b.dataset.n=i+1;
-  function kosong(){im.remove();b.classList.add('kosong')}
-  im.onerror=kosong;
-  if(im.complete&&!im.naturalWidth)kosong();
-  b.onclick=function(){if(b.classList.contains('kosong'))return;lbimg.src=im.src;lbimg.alt=im.alt;lb.classList.add('show')};
-});
 // Foto lokasi: klik untuk memperbesar
 var lk=document.getElementById('lokasi');
 lk.querySelector('img').onerror=function(){lk.style.display='none';var c=document.querySelector('.lokasi-cap');if(c)c.style.display='none'};
